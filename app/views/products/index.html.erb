@@ -1,0 +1,10 @@
+<h1>Store</h1>
+
+<% @products.each do |product| %>
+<!-- <h1><a href="/products/<%= product.id %>"<%= product.name %></a></h2> -->
+  <h2><%= link_to product.title , "/products/#{product.id}" %></h2>
+  <img src=" <%= product.image %> "</img>
+  <h3><%= product.price %></h3>
+  <h2><%= product.description %></h2>
+  <hr>
+<% end %>
