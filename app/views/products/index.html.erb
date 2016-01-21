@@ -1,18 +1,14 @@
-<h1>Esstials Shop</h1>
-<h2>Only what you really need.</h2>
 
-<%= link_to "Add a new product", "/products/new" %>
-
-<% @products.each do |product| %>
-  <h2><a href="/products/<%= product.id %>"><%= product.name %></a></h2>
-  <img src=" <%= product.image %> "</img>
-  <h3><%= product.price %></h3>
-  <h3><%= product.description %></h3>
-
-<%= link_to "Home", "/" %>
-<%= link_to "Edit", "/products/#{product.id}/edit" %>
-<%= link_to "Delete", "/products/#{product.id}",
-method: :delete, data:{confirm: "Are you sure?"} %>
-
-  <hr>
-<% end %>
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-md-offset-1 col-md-3 col-sm-6 list-view">
+      <div class="thumbnail">
+        <h2><a href="/products/<%= product.id %>"><%= product.name %></a></h2>
+        <%= image_tag product.image, class: "img-responsive" %>
+        <h3><%= product.price %></h3>
+        <h3><%= product.description %></h3>
+        <h3><%= product.sale_notice %></h3>
+      </div>
+    </div>
+    <% end %>
+</div>
