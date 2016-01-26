@@ -2,10 +2,12 @@
 <img src=" <%= @product.image %> "</img>
 
 <h3><%= @product.description %></h3>
+<h3>By: <%= @product.supplier %></h3>
 <h3><%= @product.sale_notice %></h3>
-<h3><%= @product.price %> Price</h3>
-<h3><%= @product.tax %> Tax <h3>
-<h2><%= @product.total %> Total </h2>
+<h3><%= @product.stock_status %></h3>
+<h3>$<%= @product.price %> Price</h3>
+<h3>$<%= @product.tax %> Tax <h3>
+<h2>$<%= @product.total %> Total </h2>
 
 <%= link_to "Home", "/" %>
 <%= link_to "Edit", "/products/#{@product.id}/edit" %>

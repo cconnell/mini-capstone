@@ -5,7 +5,7 @@
       <div class="thumbnail">
         <h2><a href="/products/<%= product.id %>"><%= product.name %></a></h2>
         <%= image_tag product.image, class: "img-responsive" %>
-        <h3><%= product.price %></h3>
+        <h3>$<%= product.price %></h3>
         <h3><%= product.description %></h3>
         <h3><%= product.sale_notice %></h3>
       </div>

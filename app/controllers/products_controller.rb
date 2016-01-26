@@ -6,10 +6,19 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+
+      if params[:sort] && params[:sort_order]
+        @products = @products.order(params[:sort] => params[:sort_order])
+      end
+      if params[:discount]
+        @products = @products.where("price <= ?", params[:discount])
+      end
+
   end
 
   def show
-    @product = Product.find(params[:id])  
+    @product = Product.find(params[:id]) 
+
   end
 
   def new  
@@ -47,4 +56,15 @@ class ProductsController < ApplicationController
     redirect_to "/"
   end
   
+  def random
+    @product = Product.all.sample
+    render :show
+  end
+
+  def search
+    @products = Product.where("name LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+
+    render :index
+  end
+
 end
