@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
 
   belongs_to :supplier
-  has_many :images
+  belongs_to :images
 
   def sale_notice
     if price < 2
