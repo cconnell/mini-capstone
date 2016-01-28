@@ -27,10 +27,13 @@ class ProductsController < ApplicationController
 
   def create
     @product= Product.create({
-                              name: params[:name], image: params[:image], price: params[:price], description: params[:description]})
+                              name: params[:name], price: params[:price], supplier_id: params[:supplier_id], description: params[:description]})
+  
+  Image.create(url: params[:image], product_id: @product.id) if params[:image] != ""
+
   flash[:success] = "New product created"
 
-  redirect_to "/"
+  redirect_to "/products/#{@product.id}"
   end
 
   def edit
@@ -43,7 +46,8 @@ class ProductsController < ApplicationController
     @product.update({
                               name: params[:name], image: params[:image], price: params[:price], description: params[:description]
                               })
-
+    image.create(url: params[:image], product_id: @product.id) if params[:image] != ""
+    
     redirect_to "/"
   end
   

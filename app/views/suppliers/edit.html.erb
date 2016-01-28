@@ -1,0 +1,22 @@
+<h1>Edit Supplier</h1>
+
+<%= form_tag "suppliers", method: :post do %>
+
+
+<div>
+  <%= label_tage :name %>
+  <%= text_field_tag :name, @supplier.name %>
+</div>
+
+<div>
+  <%= label_tage :email %>
+  <%= text_field_tag :email, @supplier.email %>
+</div>
+
+<div>
+  <%= label_tage :phone %>
+  <%= text_field_tag :phone, @supplier.phone %>
+</div>
+
+  <% end %>
+

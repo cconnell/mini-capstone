@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
-
+  has_many :orders
   belongs_to :supplier
-  belongs_to :images
+  has_many :images
 
   def sale_notice
     if price < 2
@@ -11,17 +11,9 @@ class Product < ActiveRecord::Base
     end
   end
 
-  # def tax
-  #   tax = (price.to_f * 0.09).round(2)
-  # end
-
   def tax
     price * 0.09
   end
-
-  # def total
-  #   total = (price.to_f * 0.09).round(2) + price.to_f 
-  # end
 
   def total
     price + tax
@@ -34,5 +26,13 @@ class Product < ActiveRecord::Base
       "true"
     end
   end
+
+  # def get_the_first_image
+  #   if images.first !=
+  #     images.first.url 
+  #   # else
+  #   #   Image.first.url
+  #   end
+  # end
 
 end

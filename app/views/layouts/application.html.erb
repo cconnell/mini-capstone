@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/products/new">Add new Product <span class="sr-only">(current)</span></a></li>
-        <li><a href="products/random">Random Product</a></li>
+        <li><a href="/products/random">Random Product</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort Products<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -52,14 +52,12 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
 
-      <% if current_user %>
-          <li> signed in: <%= current_user %></li>
-        <% else %>
-          <li><a href="/users/sign_up">Sign Up</a></li>
-      <% end %>
-        
-        <li><%= link_to "Sign Out", "/users/sign_out", method: :delete if user_signed_in? %></li>
-
+          <% if current_user %>
+                <li>signed in: ok<%= current_user %></li>
+            <% else %>
+                <li><a href="/users/sign_up">Sign Up</a></li>
+          <% end %>
+          <li><%= link_to "Sign Out", "/users/sign_out", method: :delete if user_signed_in? %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
