@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   get '/products/random' => 'products#random'
   get'/products/:id' => 'products#show'
 
-
+  get '/carted_products' => 'carted_products#index'
+  post '/carted_products' => 'carted_products#create'
+  get '/carted_products/:id' => 'carted_products#show'
+  get '/carted_products/:id/edit' =>'carted_products#edit'
+  patch '/carted_products/:id' => 'carted_products#update'
 
   get '/products/:id/edit' =>'products#edit'
   patch '/products/:id' => 'products#update'
@@ -32,5 +36,7 @@ Rails.application.routes.draw do
 
   post '/orders' => 'orders#create'
   get '/orders/:id' => 'orders#show' 
+
+
 
 end

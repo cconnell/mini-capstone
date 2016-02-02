@@ -4,6 +4,12 @@
 <% end %>
 
 <h3><%= @product.description %></h3>
+
+<h3>Category is: <% @product.categories.each do |id|%>
+
+<h3> <%= id.name %> </h3>
+<% end %>
+
 <h3>By: <%= @product.supplier.name %></h3>
 <h3><%= @product.sale_notice %></h3>
 <h3><%= @product.stock_status %></h3>
@@ -16,15 +22,23 @@
 <%= link_to "Delete", "/products/#{@product.id}",
 method: :delete, data:{confirm: "Are you sure?"} %>
 
-<h1>Update your product</h1>
+<hr>
+<h1>Buy It!</h1>
 
-<%= form_tag "/orders", method: :post do %>
+<%= form_tag "/carted_products", method: :post do %>
+<div class="form-group">
 
   <div>
-  <%= label_tag :Quantity %>
+  
+  <%= hidden_field_tag :product_id, @product.id %>
+  </div>
+
+  <div>
+  <%= label_tag :quantity %>
   <%= text_field_tag :quantity %>
   </div>
 
 
-  <%= submit_tag "Buy Now!" %>
+  <%= submit_tag "Add to cart!" %>
 <% end %>
+</div>

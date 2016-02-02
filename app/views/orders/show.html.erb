@@ -1,3 +1,10 @@
-<h1 class="change-me"><%= @order.quantity %></h1>
-
-<h2>Order confirmed</h2>
+<h1>User Id: <%= @order.user_id %></h1>
+<h1>User Email: <%= @order.user.email %></h1>
+<h2>Ordered <%= @order.created_at %></h2>
+<h1>Order Id Number: <%= @order.id %></h1>
+<h1>Product Id: <%= @order.product_id %></h1>
+<img src="<%= @order.product.images.first.url %>">
+<h1><%= @order.name %></h1>
+<h2>Sub total: <%= number_to_currency(@order.subtotal) %></h2>
+<h2>Tax: <%= number_to_currency(@order.tax) %></h2>
+<h1>Total: <%= number_to_currency(@order.total) %></h1>

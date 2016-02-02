@@ -4,7 +4,7 @@
     <div class="col-md-offset-1 col-md-3 col-sm-6 list-view">
       <div class="thumbnail">
         <h2><a href="/products/<%= product.id %>"><%= product.name %></a></h2>
-        <img src="<%= product.images[0].url %>" class: "img-responsive">
+        <img src="<%= product.get_the_first_image %>" class: "img-responsive">
         <h3>$<%= product.price %></h3>
         <h3><%= product.description %></h3>
         <h3><%= product.sale_notice %></h3>

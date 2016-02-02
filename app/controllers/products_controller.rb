@@ -13,7 +13,9 @@ class ProductsController < ApplicationController
       if params[:discount]
         @products = @products.where("price <= ?", params[:discount])
       end
-
+      if params[:category]
+        @products = Category.find_by(name: params[:category]).products
+      end
   end
 
   def show
@@ -27,7 +29,8 @@ class ProductsController < ApplicationController
 
   def create
     @product= Product.create({
-                              name: params[:name], price: params[:price], supplier_id: params[:supplier_id], description: params[:description]})
+                              name: params[:name], price: params[:price], supplier_id: params[:supplier_id], description: params[:description]
+                              })
   
   Image.create(url: params[:image], product_id: @product.id) if params[:image] != ""
 

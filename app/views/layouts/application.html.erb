@@ -31,8 +31,14 @@
             <li><a href="/products?sort=price&sort_order=desc">Price: High to Low</a></li>
             <li><a href="/products?discount=10">Discount Items</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
+            
+            <% Category.all.each do |category| %>
+
+            <li><%= link_to category.name, "/products?category=#{category.name}" %></li>
+            
+            <% end %>
+            <li class="="divider'></li">
+            
             <li><a href="#">One more separated link</a></li>
             <li classs"divider'></li>
             <li>
@@ -53,7 +59,8 @@
       <ul class="nav navbar-nav navbar-right">
 
           <% if current_user %>
-                <li>signed in: ok<%= current_user %></li>
+                <li>signed in: <%= current_user.email %></li>
+
             <% else %>
                 <li><a href="/users/sign_up">Sign Up</a></li>
           <% end %>
