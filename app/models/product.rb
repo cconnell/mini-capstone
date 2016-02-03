@@ -1,9 +1,14 @@
 class Product < ActiveRecord::Base
-  has_many :orders, through: :carted_products
+  
   belongs_to :supplier
+  
   has_many :images
+  
   has_many :categorize_products
   has_many :categories, through: :categorize_products
+
+  has_many :carted_products
+  has_many :orders, through: :carted_products
 
   def sale_notice
     if price < 2

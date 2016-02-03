@@ -1,15 +1,9 @@
-
-  <% @carted_products.each do |product| %>
-    <%= product.id %> 
-    <%= product.name %>
-    <%= product.status %>
-
-  <%= image_tag product.image %>
-  <%= hidden_field_tag :product_id, product.id %>
-
+<h1>Your Cart<h1>
+  <% @carted_products.each do |carted_product| %>
+    <h2><%= carted_product.product.name %></h2> 
+    <h2><%= carted_product.quantity %> <%= link_to "Remove Item", "/carted_products/#{carted_product.id}", method: :delete %></h2>
 <% end %>
-
+  
 <%= form_tag "/orders", method: :post do %>
-<%= submit_tag "Buy It!", class: "btn btn-success btn-lg" %>
-
+  <%= submit_tag "Buy Now!", class: "btn btn-default btn-lg" %>
 <% end %>

@@ -1,14 +1,18 @@
 class CartedProductsController < ApplicationController
+  
   def index
-    @carted_products = CartedProduct.
+    if user_signed_in? && current_user.carted_products.where(status: "Carted").any?
+      @carted_products = current_user.carted_products.where(status: "Carted")
+    else
+      flash[:warning] = "Cart is empty."
+      redirect_to "/"
   end
+end
 
   def create
-    @carted_product = CartedProduct.create ({quantity: params[:quantity], product_id: params[:product_id], user_id: current_user.id, status: "carted"})
-      
-    flash[:success] = "Added to cart"
-
-      redirect_to "/carted_products"
+    CartedProduct.create(product_id: params[:product_id], quantity: params[:quantity], user_id: current_user.id, status: "Carted") 
+      flash[:success] = "Added a product to your cart."
+    redirect_to "/carted_products"
   end
 
   def edit
