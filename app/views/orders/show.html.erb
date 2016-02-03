@@ -8,3 +8,9 @@
 <h2>Sub total: <%= number_to_currency(@order.subtotal) %></h2>
 <h2>Tax: <%= number_to_currency(@order.tax) %></h2>
 <h1>Total: <%= number_to_currency(@order.total) %></h1>
+
+
+<hr>
+<% @order.carted_products.each do |carted_product|%>
+  <h4>
+<% end %>

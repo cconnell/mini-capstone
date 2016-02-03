@@ -1,8 +1,6 @@
 class CartedProductsController < ApplicationController
-
-  def
   def index
-    @carted_product = CartedProducts.all
+    @carted_products = CartedProduct.
   end
 
   def create
@@ -10,7 +8,7 @@ class CartedProductsController < ApplicationController
       
     flash[:success] = "Added to cart"
 
-      redirect_to "/products"
+      redirect_to "/carted_products"
   end
 
   def edit

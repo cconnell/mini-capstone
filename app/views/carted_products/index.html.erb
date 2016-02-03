@@ -1,0 +1,15 @@
+
+  <% @carted_products.each do |product| %>
+    <%= product.id %> 
+    <%= product.name %>
+    <%= product.status %>
+
+  <%= image_tag product.image %>
+  <%= hidden_field_tag :product_id, product.id %>
+
+<% end %>
+
+<%= form_tag "/orders", method: :post do %>
+<%= submit_tag "Buy It!", class: "btn btn-success btn-lg" %>
+
+<% end %>
