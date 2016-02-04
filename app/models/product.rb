@@ -1,5 +1,17 @@
 class Product < ActiveRecord::Base
   
+  validates :price, numericality: true
+  validates :price, numericality: {only_integer: false}
+  validates :price, numericality: {greater_than: 0}
+  validates :price, presence: true
+
+  validates :name, presence: true {exclusion: with: /\A[a-zA-Z]+\z/}
+  validates :name, format: {with: /\AThe/}
+  validates :name, uniqueness: true
+  validates :name, length: {maximum: 6}
+
+
+
   belongs_to :supplier
   
   has_many :images
@@ -9,6 +21,7 @@ class Product < ActiveRecord::Base
 
   has_many :carted_products
   has_many :orders, through: :carted_products
+
 
   def sale_notice
     if price < 2

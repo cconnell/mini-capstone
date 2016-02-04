@@ -1,5 +1,14 @@
 class Order < ActiveRecord::Base
   
+  validates: user_id: numericality: true
+  validates: subtotal: numericality: true
+  validates: subtotal: numericality: {greater_than: 0}
+
+  validates: tax: numericality: true
+  validates: subtotal: numericality: true
+  validates: subtotal: numericality: {greater_than: 0}
+
+
   belongs_to :user
 
   has_many :carted_products

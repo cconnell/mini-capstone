@@ -1,5 +1,7 @@
 class CartedProductsController < ApplicationController
   
+    before_action :authenticate_user! 
+    
   def index
     if user_signed_in? && current_user.carted_products.where(status: "Carted").any?
       @carted_products = current_user.carted_products.where(status: "Carted")

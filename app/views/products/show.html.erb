@@ -18,10 +18,11 @@
 <h2>$<%= @product.total %> Total </h2>
 
 <%= link_to "Home", "/" %>
+<% if current_user && current_user.admin %>
 <%= link_to "Edit", "/products/#{@product.id}/edit" %>
 <%= link_to "Delete", "/products/#{@product.id}",
 method: :delete, data:{confirm: "Are you sure?"} %>
-
+<% end %>
 <hr>
 <h1>Buy It!</h1>
 
