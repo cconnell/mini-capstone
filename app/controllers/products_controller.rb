@@ -1,10 +1,13 @@
 class ProductsController < ApplicationController
 
+    before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+
   def one
     @products = Product.last
    end 
 
   def index
+
     @products = Product.all
 
       if params[:sort] && params[:sort_order]
@@ -23,11 +26,12 @@ class ProductsController < ApplicationController
 
   end
 
-  def new  
-
+  def new
   end
 
   def create
+
+
     @product= Product.create({
                               name: params[:name], price: params[:price], supplier_id: params[:supplier_id], description: params[:description]
                               })

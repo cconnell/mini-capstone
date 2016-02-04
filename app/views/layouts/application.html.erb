@@ -22,7 +22,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/products/new">Add new Product <span class="sr-only">(current)</span></a></li>
+
+        <% if user_signed_in? && current_user.admin %>
+          <li class="active"><a href="/products/new">Add new Product <span class="sr-only">(current)</span></a></li>
+        <% end %>
         <li><a href="/products/random">Random Product</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort Products<span class="caret"></span></a>
@@ -60,7 +63,7 @@
 
           <% if current_user %>
               <li>signed in: <%= current_user.email %></li>
-              <li><span class="glyphicon glyphicon-shopping-cart"> <%= link_to "Cart", "/carted_products" %></span></li>
+              <li><span class="glyphicon glyphicon-shopping-cart"> <%= link_to "Cart #{@cart_count}", "/carted_products" %></span></li>
           <% else %>
               <li><a href="/users/sign_up">Sign Up</a></li>
           <% end %>

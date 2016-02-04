@@ -4,29 +4,19 @@ class Order < ActiveRecord::Base
 
   has_many :carted_products
   has_many :products, through:  :carted_products
-  
-  def calc_subtotal(price)
-    quantity * product.price
-  end
 
-  def calc_tax(tax_rate)
-    subtotal * tax_rate
-  end
+  def calculate_totals
 
-  def calc_total
-    subtotal + tax
-  end
+    subtotal = 0
 
-  def name
-    product.name
-  end
+     carted_products.each do |carted_product|
+        subtotal += carted_product.product.price
+     end
 
-  def get_the_first_image
-    if images.first
-      images.first.url 
-    else
-      Image.first.url
-    end
+    tax = subtotal * 0.09
+    total = subtotal + tax
+ 
+    update(subtotal: subtotal, tax: tax, total: total)
   end
 end
 

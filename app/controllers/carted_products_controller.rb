@@ -24,20 +24,21 @@ end
 
     @carted_product = CartedProduct.create {[quantity: params[:quantity], product_id: params[:product_id], user_id: params[:user_id]
       ]}
-      flash[success] = "Cart Updated"
+      flash[:success] = "Cart Updated"
       redirect_to "/products"
     
   end
 
-  def remove
-    @carted_product = CartedProduct.find(params[:id])
-
-    @carted_product.status = "remove"
+  def destroy
+    carted_product = CartedProduct.find(params[:id])
+    carted_product.update(status: "Remove")
     
-      flash[success] = "Product Removed"
+    redirect_to "/carted_products"
+    
+    flash[:success] = "Product Removed"
 
 
-      redirect_to "/carted_products"
+      
 
   end
 
